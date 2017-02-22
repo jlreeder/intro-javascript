@@ -26,16 +26,9 @@ function myMap(array, callback) {
 
 function myInject(array, callback, acc) {
 
-  let startingIndex = 0;
+  if (!acc) { acc = array.shift(); }
 
-  if (!acc) {
-    startingIndex = 1;
-    acc = array[0];
-  }
-
-  for (var i = startingIndex; i < array.length; i++) {
-    acc = callback(acc, array[i]);
-  }
+  array.forEach((el) => { acc = callback(acc, el); });
 
   return acc;
 }
