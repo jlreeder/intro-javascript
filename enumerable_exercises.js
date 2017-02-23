@@ -5,6 +5,15 @@ function myEach(array, callback) {
   return array;
 }
 
+Array.prototype.myEach = function (callback) {
+  for (var i = 0; i < this.length; i++) {
+    callback(this[i]);
+  }
+  return this;
+};
+
+[1,2,3].myEach(num => console.log(num + 1));
+
 
 // function addOne(num) {
 //   console.log(num + 1);
