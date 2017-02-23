@@ -33,5 +33,37 @@ function myInject(array, callback, acc) {
   return acc;
 }
 
-console.log(myInject([1, 2, 3], (acc, el) => acc + el, 5));
-console.log(myInject([1, 2, 3], (acc, el) => acc + el ));
+// console.log(myInject([1, 2, 3], (acc, el) => acc + el, 5));
+// console.log(myInject([1, 2, 3], (acc, el) => acc + el ));
+
+function mySelect(array, callback) {
+  let result = [];
+
+  array.forEach((el) => {
+    if (callback(el)) {
+      result.push(el);
+    }
+  });
+
+  return result;
+}
+
+// console.log(
+//   mySelect([1, 2, 3, 4, 5], el => el % 2 === 0)
+// );
+
+function myCount(array) {
+  let counter = 0;
+
+  array.forEach( el => counter++ );
+
+  return counter;
+}
+
+// console.log(
+//   myCount([1, 2, 3, 7])
+// );
+
+console.log(
+  myCount({federer: 35, agassi: 60})
+);
