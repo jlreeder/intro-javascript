@@ -55,14 +55,14 @@ function mySelect(array, callback) {
 function myCount(array) {
   let counter = 0;
 
-  array.forEach( el => counter++ );
+  Object.keys(array).forEach( el => counter++ );
 
   return counter;
 }
 
-// console.log(
-//   myCount([1, 2, 3, 7])
-// );
+console.log(
+  myCount([1, 2, 3, 7])
+);
 
 console.log(
   myCount({federer: 35, agassi: 60})
