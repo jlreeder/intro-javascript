@@ -60,10 +60,36 @@ function myCount(array) {
   return counter;
 }
 
-console.log(
-  myCount([1, 2, 3, 7])
-);
+// console.log(
+//   myCount([1, 2, 3, 7])
+// );
+//
+// console.log(
+//   myCount({federer: 35, agassi: 60})
+// );
 
-console.log(
-  myCount({federer: 35, agassi: 60})
-);
+function include(array, target) {
+
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === target) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+// console.log(include([3,4,5],2));
+// console.log(include([3,4,5], 3));
+
+function any(array, callback) {
+
+  for (var i = 0; i < array.length; i++) {
+    if (callback(array[i])) { return true; }
+  }
+
+  return false;
+}
+
+// console.log(any([3, 5, 7], el => el % 2 === 0));
+// console.log(any([3, 5, 7], el => el % 2 === 1));
