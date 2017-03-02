@@ -12,7 +12,7 @@ Array.prototype.myEach = function (callback) {
   return this;
 };
 
-[1,2,3].myEach(num => console.log(num + 1));
+// [1,2,3].myEach(num => console.log(num + 1));
 
 
 // function addOne(num) {
@@ -33,6 +33,17 @@ function myMap(array, callback) {
 
 // console.log(myMap([1,2,3], num => num + 1));
 
+Array.prototype.myMap = function (callback) {
+  let result = [];
+
+  this.forEach( el => result.push(callback(el)));
+
+  return result;
+};
+
+// console.log([1, 2, 3].myMap(num => num + 1));
+
+
 function myInject(array, callback, acc) {
 
   if (!acc) { acc = array.shift(); }
@@ -42,8 +53,23 @@ function myInject(array, callback, acc) {
   return acc;
 }
 
-// console.log(myInject([1, 2, 3], (acc, el) => acc + el, 5));
 // console.log(myInject([1, 2, 3], (acc, el) => acc + el ));
+// console.log(myInject([1, 2, 3], (acc, el) => acc + el, 5));
+
+Array.prototype.myInject = function (callback, acc) {
+  if (!acc) { acc = this.shift(); }
+
+  this.forEach((el) => {
+    acc = callback(acc, el);
+  });
+
+  return acc;
+};
+
+
+// console.log([1, 2, 3].myInject((acc, el) => acc + el));
+// console.log([1, 2, 3].myInject((acc, el) => acc + el, 5));
+
 
 function mySelect(array, callback) {
   let result = [];
@@ -57,9 +83,26 @@ function mySelect(array, callback) {
   return result;
 }
 
-// console.log(
-//   mySelect([1, 2, 3, 4, 5], el => el % 2 === 0)
-// );
+console.log(
+  mySelect([1, 2, 3, 4, 5], el => el % 2 === 0)
+);
+
+Array.prototype.mySelect = function (callback) {
+  let result = [];
+
+  this.forEach((el) => {
+    if (callback(el)) {
+      result.push(el);
+    }
+  });
+
+  return result;
+};
+
+
+console.log(
+  [1, 2, 3, 4, 5].mySelect( el => el % 2 === 0)
+);
 
 function myCount(array) {
   let counter = 0;
